@@ -1,0 +1,14 @@
+# Use the official Ubuntu image as a base
+FROM ubuntu:latest
+
+# Update the package list and install Apache2
+RUN apt-get update && apt-get install -y apache2
+
+# Copy your website content to the Apache document root
+COPY ./website/ /var/www/html/
+
+# Expose port 80 to the outside world
+EXPOSE 80
+
+# Start the Apache server
+CMD ["systemctl restart apache2"]
