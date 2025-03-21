@@ -1,0 +1,9 @@
+version: "3" #Legacy
+services:
+  web:
+    image: alpine:latest
+    command: sh -c "apk update && apk add lighttpd && lighttpd -D -f /etc/lighttpd/lighttpd.conf"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./website:/var/www/localhost/htdocs
